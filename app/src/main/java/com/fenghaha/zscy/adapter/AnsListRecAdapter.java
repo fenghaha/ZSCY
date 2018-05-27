@@ -2,6 +2,7 @@ package com.fenghaha.zscy.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,7 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.fenghaha.zscy.R;
+import com.fenghaha.zscy.activities.AnswerDetailActivity;
 import com.fenghaha.zscy.bean.Answer;
+import com.fenghaha.zscy.bean.Question;
 import com.fenghaha.zscy.bean.User;
 import com.fenghaha.zscy.interfaces.MyClickCallBack;
 import com.fenghaha.zscy.util.ApiParams;
@@ -34,23 +37,23 @@ import java.util.List;
 public class AnsListRecAdapter extends RecyclerView.Adapter<AnsListRecAdapter.ViewHolder> {
     private User mUser = MyApplication.getUser();
     private String kind;
-    private int questionId;
+    private Question question;
     public List<Answer> mAnswerList = new ArrayList<>();
     private ImageLoader imageLoader;
     private MyClickCallBack mCLickListener;
 
     private static final String TAG = "AnsListRecAdapter";
 
-    public AnsListRecAdapter(Context context, int questionId, String kind) {
+    public AnsListRecAdapter(Context context, Question question, String kind) {
         this.kind = kind;
-        this.questionId = questionId;
+        this.question = question;
         imageLoader = new ImageLoader();
         imageLoader.setImageCache(new DoubleCache(context));
     }
 
     public void getAnswers(int page, int size, HttpUtil.HttpCallBack callBack) {
         String url = ApiParams.GET_QUESTION_DETAIL;
-        String param = "stuNum=" + mUser.getStuNum() + "&idNum=" + mUser.getIdCardNum() + "&question_id=" + questionId;
+        String param = "stuNum=" + mUser.getStuNum() + "&idNum=" + mUser.getIdCardNum() + "&question_id=" + question.getId();
         HttpUtil.post(url, param, callBack);
     }
 
@@ -59,6 +62,9 @@ public class AnsListRecAdapter extends RecyclerView.Adapter<AnsListRecAdapter.Vi
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         ViewHolder holder = new ViewHolder(inflater.inflate(R.layout.answer_item, parent, false));
+        holder.all.setOnClickListener(v ->{
+            AnswerDetailActivity.actionStart(holder.all.getContext(),question,mAnswerList.get(holder.getAdapterPosition()));
+        });
         holder.praise.setOnClickListener(v -> {
             Answer answer = mAnswerList.get(holder.getAdapterPosition());
             if (answer.getIs_praised() == 0) {
@@ -176,7 +182,7 @@ public class AnsListRecAdapter extends RecyclerView.Adapter<AnsListRecAdapter.Vi
         LinearLayout comment;
         ImageView praise;
         ImageView gender;
-
+        LinearLayout all;
         ViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.tv_answer_author_name);
@@ -190,6 +196,7 @@ public class AnsListRecAdapter extends RecyclerView.Adapter<AnsListRecAdapter.Vi
             comment = itemView.findViewById(R.id.ln_comment);
             praise = itemView.findViewById(R.id.iv_praise);
             gender = itemView.findViewById(R.id.iv_gender);
+            all = itemView.findViewById(R.id.all);
         }
     }
 

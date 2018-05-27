@@ -70,7 +70,7 @@ public class QueDetailActivity extends AppCompatActivity {
         mAnswerNum.setText(String.valueOf(question.getAns_num())+"个回答");
         mSort.setOnClickListener(v -> popupSortWindow());
         RecyclerView recyclerView = findViewById(R.id.rec_answer_list);
-        AnsListRecAdapter ansListRecAdapter = new AnsListRecAdapter(this, question.getId(), question.getKind());
+        AnsListRecAdapter ansListRecAdapter = new AnsListRecAdapter(this, question, question.getKind());
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setAdapter(ansListRecAdapter);
         recyclerView.setLayoutManager(manager);

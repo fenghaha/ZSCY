@@ -13,7 +13,7 @@
         android:orientation="horizontal">
 
         <com.fenghaha.zscy.views.RoundImageView
-            android:id="@+id/image_answer_avatar"
+            android:id="@+id/image_comment_avatar"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center_vertical|center_horizontal"
@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tv_answer_author_name"
+                    android:id="@+id/tv_comment_author_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
@@ -58,7 +58,7 @@
             android:gravity="center">
 
             <TextView
-                android:id="@+id/question_reward"
+                android:id="@+id/comment_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
@@ -72,7 +72,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tv_answer_content"
+        android:id="@+id/tv_comment_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ellipsize="end"

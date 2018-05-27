@@ -1,7 +1,10 @@
 package com.fenghaha.zscy.activities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
@@ -10,11 +13,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.fenghaha.zscy.R;
+import com.fenghaha.zscy.adapter.CommentListAdapter;
 import com.fenghaha.zscy.bean.Answer;
 import com.fenghaha.zscy.bean.Question;
 import com.fenghaha.zscy.bean.User;
+import com.fenghaha.zscy.util.HttpUtil;
 import com.fenghaha.zscy.util.ImageLoader.ImageLoader;
 import com.fenghaha.zscy.util.ImageLoader.cacheStrategy.DoubleCache;
+import com.fenghaha.zscy.util.JsonParser;
 import com.fenghaha.zscy.util.MyApplication;
 import com.fenghaha.zscy.util.MyTextUtil;
 import com.fenghaha.zscy.views.RoundImageView;
@@ -29,6 +35,8 @@ public class AnswerDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer_detail);
+        mAnswer = (Answer) getIntent().getSerializableExtra("answer_data");
+        mQuestion = (Question) getIntent().getSerializableExtra("question_data");
         mLoader = new ImageLoader();
         mLoader.setImageCache(new DoubleCache(this));
         setupViews();
@@ -51,9 +59,10 @@ public class AnswerDetailActivity extends AppCompatActivity {
         mBack.setOnClickListener(v -> finish());
         mMenu.setOnClickListener(v -> popupMenuWindow());
         mTitle.setText(mQuestion.getTitle());
-        if (!MyTextUtil.isNull(mAnswer.getPhoto_thumbnail_src())) {
-            mLoader.displayImage(mAnswer.getPhoto_thumbnail_src(), mAvatar);
-        } else mAvatar.setImageResource(R.drawable.default_avatar);
+//        if (!MyTextUtil.isNull(mAnswer.getPhoto_thumbnail_src())) {
+//            mLoader.displayImage(mAnswer.getPhoto_thumbnail_src(), mAvatar);
+//        }
+        //else mAvatar.setImageResource(R.drawable.default_avatar);
         mAdopt.setOnClickListener(v -> adoptAnswer());
         if (mQuestion.getQuestioner_nickname().equals(mUser.getNickName())) {
             if (mAnswer.getIs_adopted() == 0) {
@@ -83,7 +92,25 @@ public class AnswerDetailActivity extends AppCompatActivity {
 
 
         RecyclerView mCommentsRec = findViewById(R.id.rec_comment_list);
+        CommentListAdapter adapter = new CommentListAdapter(this);
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        mCommentsRec.setLayoutManager(manager);
+        mCommentsRec.setAdapter(adapter);
+        adapter.getCommentList(mAnswer.getId(), new HttpUtil.HttpCallBack() {
+            @Override
+            public void onResponse(HttpUtil.Response response) {
+                if (response.isOk()){
+                    adapter.mCommentList.clear();
+                    adapter.mCommentList.addAll(JsonParser.getCommentList(new String(response.getBytes())));
+                    adapter.notifyDataSetChanged();
+                }
+            }
 
+            @Override
+            public void onFail(String reason) {
+
+            }
+        });
     }
 
     private void cancelPraiseAnswer() {
@@ -98,7 +125,12 @@ public class AnswerDetailActivity extends AppCompatActivity {
     private void adoptAnswer() {
     }
 
-
+    public static void actionStart(Context context, Question question,Answer answer) {
+        Intent intent = new Intent(context, AnswerDetailActivity.class);
+        intent.putExtra("question_data", question);
+        intent.putExtra("answer_data",answer);
+        context.startActivity(intent);
+    }
     private void popupMenuWindow() {
     }
 }

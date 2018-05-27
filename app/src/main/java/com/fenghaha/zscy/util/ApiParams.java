@@ -5,7 +5,7 @@ package com.fenghaha.zscy.util;
  */
 public class ApiParams {
     public static final int SUCCESS = 200;
-
+    public static final String GET_REMARK_LIST = "https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/getRemarkList";
     public static final String LOGIN = "https://wx.idsbllp.cn/api/verify";
     public static final String GET_QUESTION_LIST = "https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Question/getQuestionList";
     public static final String ASK_A_QUESTION = " https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Question/add";

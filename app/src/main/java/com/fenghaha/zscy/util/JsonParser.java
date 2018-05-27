@@ -1,8 +1,10 @@
 package com.fenghaha.zscy.util;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.fenghaha.zscy.bean.Answer;
+import com.fenghaha.zscy.bean.Comment;
 import com.fenghaha.zscy.bean.Question;
 import com.fenghaha.zscy.bean.User;
 
@@ -20,6 +22,7 @@ import java.util.List;
  */
 public class JsonParser {
     private static final String TAG = "JsonParser";
+
     public static boolean has(String data, String name) {
         try {
             JSONObject js = new JSONObject(data);
@@ -32,7 +35,9 @@ public class JsonParser {
         }
         return false;
     }
-    public static User getUser(String data){
+
+
+    public static User getUser(String data) {
         User user = new User();
         try {
             JSONObject jsonObject = new JSONObject(data);
@@ -51,9 +56,30 @@ public class JsonParser {
         return user;
     }
 
+    public static List<Comment> getCommentList(String data) {
+        List<Comment> commentList = new ArrayList<>();
+        try {
+            JSONObject jsonObject = new JSONObject(data);
+            JSONArray array = jsonObject.getJSONArray("data");
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject one = array.getJSONObject(i);
+                Comment comment = new Comment();
+                comment.setContent(one.getString("content"));
+                comment.setCreated_at(one.getString("created_at"));
+                comment.setNickname(one.getString("nickname"));
+                comment.setPhoto_thumbnail_src(one.getString("photo_thumbnail_src"));
+                comment.setGender(one.getString("gender"));
+                commentList.add(comment);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return commentList;
+    }
+
     public static List<Answer> getAnswerList(String data) {
         List<Answer> mAnswerList = new ArrayList<>();
-        Log.d(TAG, "data =  "+data);
+        Log.d(TAG, "data =  " + data);
         try {
             JSONArray answerArray = null;
             Object json = new JSONTokener(data).nextValue();
