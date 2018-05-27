@@ -1,6 +1,7 @@
 # 掌上重邮
 ## 实现功能
-
+## APP下载
+[点我下载](https://raw.githubusercontent.com/fenghaha/ZSCY/master/app/release/app-release.apk)
 1. 登录界面以及登录逻辑
 3. 课表(一直没课2333)
 2. 邮问社区的基本功能(用掉了90%的时间,然鹅还是没写完)
