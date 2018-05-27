@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/bg_login_gradient"
+        android:orientation="horizontal"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp">
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
+            <Button
+                android:layout_width="19dp"
+                android:layout_height="25dp"
+                android:background="@drawable/ic_notice" />
+            <com.fenghaha.zscy.views.RedDot
+                android:id="@+id/red_dot"
+                android:visibility="visible"
+                android:layout_marginTop="3dp"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                app:dragAble="true"
+                app:circleColor="@color/colorPink"/>
+
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="邮 问"
+            android:textColor="@color/bg_white"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/ic_filter" />
+    </LinearLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_layout_ask_cqupt"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:paddingStart="15dp"
+        app:tabIndicatorColor="@color/colorBlue"
+        app:tabIndicatorHeight="3dp"
+        app:tabMinWidth="79dp"
+        app:tabGravity="fill"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/colorBlue"
+        tools:ignore="RtlSymmetry">
+    </android.support.design.widget.TabLayout>
+    <com.fenghaha.zscy.MyViewPager
+        android:id="@+id/viewpager_ask_cqupt"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </com.fenghaha.zscy.MyViewPager>
+</LinearLayout>

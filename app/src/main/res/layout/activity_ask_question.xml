@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.AskQuestionActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/bg_login_gradient"
+        android:orientation="horizontal"
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp">
+
+
+        <Button
+            android:id="@+id/bt_ask_que_back"
+            android:layout_width="14dp"
+            android:layout_height="23dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/ic_back" />
+
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="求 助"
+            android:textColor="@color/bg_white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:text="下一步"
+            android:textColor="@color/bg_white"
+            android:textSize="15sp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_question_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入标题"
+                android:inputType="text"
+                android:maxLines="2"
+                android:textColor="#d8000000"
+                android:textSize="18sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+
+                android:layout_marginTop="5dp"
+                android:background="@color/div_gray" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_title_rest_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="3dp"
+            android:text="20"
+            android:textColor="@color/text_gray" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_weight="1.23">
+
+        <EditText
+            android:id="@+id/et_question_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:gravity="top|start"
+            android:textColor="#b2000000"
+            android:hint="详细描述你的问题和兵,表达越清楚,越容易获得帮助哦!"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_content_rest_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="15dp"
+            android:layout_marginEnd="3dp"
+            android:text="200"
+            android:textColor="@color/text_gray" />
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#bfefeaea" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp">
+
+                <com.fenghaha.zscy.views.SquareImageView
+                    android:id="@+id/iv_question_image1"
+                    android:layout_width="120dp"
+
+                    android:layout_height="120dp"
+                    android:layout_margin="7.5dp"
+                    android:src="@drawable/ic_add"
+                    android:background="@drawable/corner" />
+
+                <com.fenghaha.zscy.views.SquareImageView
+                    android:id="@+id/iv_question_image2"
+                    android:visibility="invisible"
+                    android:layout_width="120dp"
+                    android:layout_gravity="end"
+                    android:src="@drawable/ic_add"
+                    android:layout_height="105dp"
+                    android:layout_margin="7.5dp"
+                    android:background="@drawable/corner" />
+
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_add"
+                android:layout_gravity="center_horizontal"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp">
+                <com.fenghaha.zscy.views.SquareImageView
+                    android:id="@+id/iv_question_image3"
+                    android:layout_width="120dp"
+                    android:visibility="invisible"
+                    android:src="@drawable/ic_add"
+                    android:layout_height="120dp"
+                    android:layout_margin="7.5dp"
+                    android:layout_gravity="start"
+                    android:background="@drawable/corner" />
+                <com.fenghaha.zscy.views.SquareImageView
+                    android:id="@+id/iv_question_image4"
+                    android:layout_width="120dp"
+                    android:visibility="invisible"
+                    android:layout_height="120dp"
+                    android:src="@drawable/ic_add"
+                    android:layout_gravity="end"
+                    android:layout_margin="7.5dp"
+                    android:background="@drawable/corner" />
+
+            </FrameLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#77bfbfbf" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/bt_topic_choose"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/ic_topic" />
+
+        <Button
+            android:id="@+id/bt_image_choose"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="75dp"
+            android:background="@drawable/ic_image" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/check_is_anonymous"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="匿 名 求 助"
+                android:textColor="@color/colorP"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+
+    </FrameLayout>
+</LinearLayout>

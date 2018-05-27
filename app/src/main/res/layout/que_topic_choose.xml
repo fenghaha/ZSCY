@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="添加话题"
+            android:textColor="#b7000000"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_sure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="确定"
+            android:textColor="@color/colorP"
+            android:textSize="15sp" />
+
+    </FrameLayout>
+
+    <EditText
+        android:id="@+id/et_topic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:drawableStart="@drawable/ic_search_small"
+        android:maxLength="5"
+        android:drawablePadding="5dp"
+        android:hint="期末"
+        android:textColorHint="@color/colorP"
+        android:textColor="@color/colorP"
+        android:textSize="18sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="3dp"
+        android:background="#1e000000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="热门话题"
+        android:textSize="15sp" />
+
+    <RadioGroup
+        android:id="@+id/rg_topics1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_topic01"
+            style="@style/normal_menu_item"
+            android:height="35dp"
+            android:text="高数" />
+
+        <RadioButton
+            android:id="@+id/rb_topic02"
+            style="@style/normal_menu_item"
+            android:layout_marginStart="15dp"
+            android:height="35dp"
+            android:text="大雾" />
+
+        <RadioButton
+            android:id="@+id/rb_topic03"
+            style="@style/normal_menu_item"
+            android:layout_marginStart="15dp"
+            android:height="35dp"
+            android:text="PHP" />
+
+        <RadioButton
+            android:id="@+id/rb_topic04"
+            style="@style/normal_menu_item"
+            android:layout_marginStart="15dp"
+            android:height="35dp"
+            android:text="JAVA" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/rg_topics2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_topic05"
+            style="@style/normal_menu_item"
+            android:height="35dp"
+            android:text="线代" />
+
+       <RadioButton
+            android:id="@+id/rb_topic06"
+            style="@style/normal_menu_item"
+            android:layout_marginStart="15dp"
+            android:height="35dp"
+            android:text="英语" />
+
+        <RadioButton
+            android:id="@+id/rb_topic07"
+            style="@style/normal_menu_item"
+            android:layout_marginStart="15dp"
+            android:height="35dp"
+            android:text="几何" />
+
+        <RadioButton
+            android:id="@+id/rb_topic08"
+            style="@style/normal_menu_item"
+            android:layout_marginStart="15dp"
+            android:height="35dp"
+            android:text="思修" />
+    </RadioGroup>
+</LinearLayout>

@@ -1,0 +1,58 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MainActivity">
+
+
+
+
+    <RadioGroup
+        android:id="@+id/rg_tab_bar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:background="#fff"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_timetable"
+            style="@style/tab_menu_item"
+            android:drawableTop="@drawable/tab_menu_timetable"
+            android:text="@string/tab_menu_timetable" />
+
+        <RadioButton
+            android:id="@+id/rb_ask_cqupt"
+            style="@style/tab_menu_item"
+            android:drawableTop="@drawable/tab_menu_ask"
+             android:text="@string/tab_menu_ask_cqupt"/>
+
+        <RadioButton
+            android:id="@+id/rb_find"
+            style="@style/tab_menu_item"
+            android:drawableTop="@drawable/tab_menu_find"
+            android:text="@string/tab_menu_find" />
+
+        <RadioButton
+            android:id="@+id/rb_mine"
+            style="@style/tab_menu_item"
+            android:drawableTop="@drawable/tab_menu_my"
+            android:text="@string/tab_menu_my" />
+
+    </RadioGroup>
+
+    <View
+        android:id="@+id/div_tab_bar"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_above="@id/rg_tab_bar"
+        android:background="@color/div_gray" />
+
+    <com.fenghaha.zscy.MyViewPager
+        android:id="@+id/viewpager_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/div_tab_bar" />
+
+
+</RelativeLayout>
